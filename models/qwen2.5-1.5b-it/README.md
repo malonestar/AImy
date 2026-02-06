@@ -1,0 +1,1 @@
+[Qwen2.5-1.5b-int8-python Axera HF model repo](https://huggingface.co/AXERA-TECH/Qwen2.5-1.5B-Instruct-python)

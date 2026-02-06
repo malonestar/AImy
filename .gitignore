@@ -40,7 +40,6 @@ assistant.log
 **/*.engine
 **/*.plan
 **/*.ckpt
-**/*.ppn
 
 # ===============================
 # NLP / NLTK generated data

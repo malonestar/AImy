@@ -1,0 +1,1 @@
+[MeloTTS Axera HF Model Repo](https://huggingface.co/AXERA-TECH/MeloTTS)
