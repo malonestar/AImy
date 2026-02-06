@@ -1,0 +1,66 @@
+# ===============================
+# Python / OS cruft
+# ===============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Virtual environments
+# ===============================
+.venv/
+venv/
+axcl_venv/
+env/
+
+# ===============================
+# Runtime / generated output
+# ===============================
+output/
+assistant.log
+*.pickle
+*.zip
+
+# ===============================
+# Model binaries (DO NOT COMMIT)
+# ===============================
+**/*.axmodel
+**/*.onnx
+**/*.mvn
+**/*.bin
+**/*.npy
+**/*.pt
+**/*.pth
+**/*.safetensors
+**/*.gguf
+**/*.engine
+**/*.plan
+**/*.ckpt
+**/*.ppn
+
+# ===============================
+# NLP / NLTK generated data
+# ===============================
+**/nltk_data/
+**/cmudict_cache.pickle
+
+# ===============================
+# Ignore model contents but keep structure
+# ===============================
+models/**
+
+!models/**/
+!models/**/README.md
+!models/**/.gitkeep
+
+# ===============================
+# Hugging Face BERT downloads
+# ===============================
+bert-base-uncased/**
+!bert-base-uncased/
+!bert-base-uncased/README.md
+

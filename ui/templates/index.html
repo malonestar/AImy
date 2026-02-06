@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AImy Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  
+<!-- header -->
+<header>
+  <div class="brand">
+    <svg width="140" height="28" viewBox="0 0 140 28">
+      <text x="0" y="21"
+            class="logo-main">AI</text>
+      <text x="23" y="21"
+            class="logo-accent">my</text>
+    </svg>
+  </div>
+
+  <div class="header-actions">
+    <button id="btn-wake">Hey AImy!</button>
+    <button id="btn-shutdown" class="danger">Shutdown</button>
+  </div>
+</header>
+
+
+<div class="container">
+
+  <!-- LEFT COLUMN -->
+  <div class="left">
+
+    <div class="face">
+      <div id="face" data-state="ASLEEP">
+        <div class="face-inner">
+          <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+          <div class="mouth"></div>
+        </div>
+      </div>
+      <div class="mic-indicator" id="mic-indicator">
+        <div class="mic-bar"></div>
+        <div class="mic-bar"></div>
+        <div class="mic-bar"></div>
+      </div>
+    </div>
+
+    <div class="chat">
+      <div class="chat-history"></div>
+      <div class="chat-input">
+        <input id="chat-input" type="text" placeholder="Type a prompt…" />
+        <button id="chat-send">Send</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right">
+    <div class="camera">
+      <img id="camera-feed" src="/video_feed" />
+      <div class="camera-controls">
+        <button id="roi-edit">Edit ROI</button>
+      </div>
+    </div>
+    <div class="console" id="console"></div>
+  </div>
+
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

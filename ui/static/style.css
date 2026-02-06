@@ -1,0 +1,364 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0e0e11;
+  color: #e5e7eb;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+header {
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  border-bottom: 1px solid #1f2937;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.header-actions button {
+  background: #1f2937;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.header-actions button:hover {
+  background: #334155;
+}
+
+.header-actions button:active {
+  transform: translateY(1px);
+}
+
+.header-actions button.disabled,
+.header-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(40%);
+}
+
+
+.header-actions .danger {
+  background: #3f1f1f;
+  border-color: #7f1d1d;
+  color: #fecaca;
+}
+
+.header-actions .danger:hover {
+  background: #7f1d1d;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  height: calc(100vh - 44px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;   /* pulls away from left wall */
+}
+
+.logo-main {
+  fill: #e5e7eb;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.logo-accent {
+  fill: #22d3ee;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+  filter: drop-shadow(0 0 6px rgba(34,211,238,0.35));
+}
+
+
+
+/* LEFT */
+.left {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #1f2937;
+  min-height: 0;    
+  overflow: hidden; 
+}
+
+.face {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+}
+
+.face-inner {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  transform-origin: center;
+}
+
+#face {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.eyes {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 45px;
+  left: 25px;
+  right: 25px;
+}
+
+.eye {
+  width: 24px;
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 50%;
+}
+
+.mouth {
+  width: 48px;
+  height: 12px;
+  border-radius: 0 0 24px 24px;
+  background: #e5e7eb;
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mic-indicator {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 3px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  transform: translateY(2px);
+}
+
+.mic-bar {
+  width: 4px;
+  height: 14px;
+  background: #22c55e;
+  border-radius: 2px;
+  transform-origin: bottom;
+}
+
+.face[data-state="LISTENING"] .mic-indicator {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.face:not([data-state="LISTENING"]) .mic-bar {
+  background: #374151;
+}
+
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;  
+}
+
+.chat-history {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;    
+  min-height: 0;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  gap: 8px;
+  border-top: 1px solid #1f2937;
+}
+
+.chat-msg {
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  max-width: 85%;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+.chat-msg.assistant {
+  align-self: flex-start;
+  background: #020617;
+  border: 1px solid #1f2937;
+}
+
+/* RIGHT */
+.right {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  min-height: 0; 
+}
+
+.camera {
+  position: relative;      
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+}
+
+.camera img,
+#camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* preserve aspect ratio */
+  display: block;
+}
+
+.camera-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+#roi-edit {
+  background: #1f2937;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#roi-edit:hover {
+  background: #334155;
+}
+
+.console {
+  padding: 10px;
+  font-family: monospace;
+  font-size: 13px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #020617;
+  min-height: 0;        
+  white-space: pre-wrap;
+  scrollbar-width: thin;
+  scrollbar-color: #374151 #020617;
+  box-shadow: inset 0 0 12px rgba(0, 255, 136, 0.08);
+}
+
+
+.face[data-state="LOOKING"] #face .eyes {
+  animation: lookAround 2.5s infinite ease-in-out;
+}
+
+@keyframes lookAround {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-10px); }
+  50%  { transform: translateX(10px); }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.face[data-state="LISTENING"] .face-inner {
+  animation: listeningPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes listeningPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.face[data-state="THINKING"] #face .mouth {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: thinkingDots 1.4s infinite linear;
+}
+
+@keyframes thinkingDots {
+  0%   { box-shadow: 0 0 #e5e7eb, 16px 0 #374151, 32px 0 #374151; }
+  33%  { box-shadow: 0 0 #374151, 16px 0 #e5e7eb, 32px 0 #374151; }
+  66%  { box-shadow: 0 0 #374151, 16px 0 #374151, 32px 0 #e5e7eb; }
+  100% { box-shadow: 0 0 #e5e7eb, 16px 0 #374151, 32px 0 #374151; }
+}
+
+.face[data-state="SPEAKING"] #face .mouth {
+  animation: talk 0.25s infinite ease-in-out;
+}
+
+@keyframes talk {
+  0%   { height: 8px; }
+  50%  { height: 20px; }
+  100% { height: 8px; }
+}
+
+.face[data-state="ASLEEP"] {
+  opacity: 0.6;
+}
+
+.face[data-state="ASLEEP"] .face-inner {
+  animation: breathe 3s infinite ease-in-out;
+}
+
+@keyframes breathe {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+.face[data-state="ERROR"] {
+  animation: shake 0.4s infinite;
+  filter: hue-rotate(320deg);
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
