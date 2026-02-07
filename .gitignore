@@ -74,6 +74,10 @@ bert-base-uncased/**
 !models/porcupine/
 !models/porcupine/**
 
+# Allow vosk directory
+!models/Vosk/
+!models/Vosk/**
+
 # Allow custom Porcupine wake word(s)
 !models/porcupine/*.ppn
 
