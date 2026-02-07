@@ -26,7 +26,7 @@ but picovoice requires authentication at boot.
 Picovoice is a better option for performance, but is more limited 
 by the provider.  Vosk is the alternative for a purely local option.
 '''
-WAKEWORD_ENGINE = "porcupine" # options: porupine, vosk
+WAKEWORD_ENGINE = "vosk" # options: porupine, vosk
 
 PORCUPINE_ACCESS_KEY = "your-picovoice-api-key"
 PORCUPINE_DIR = MODELS_DIR / "porcupine"
