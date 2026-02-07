@@ -181,6 +181,8 @@ def main():
     audio = AudioOut()
 
     # ---------- PRELOAD MODELS ----------
+    logger.info("[MODELS] Loading models...")
+
     llm = QwenAdapter(config.QWEN_HF_PATH, config.QWEN_AX_PATH)
     llm.init_model()
     logger.info("[LLM] Qwen initialized.")
