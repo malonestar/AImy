@@ -209,11 +209,28 @@ def main():
             sensitivity=config.PORCUPINE_SENSITIVITY,
             access_key=config.PORCUPINE_ACCESS_KEY,
         )
-        wakeword.start()
         logger.info(
             f"[WAKEWORD] keyword={config.PORCUPINE_KEYWORD_PATH.name} "
             f"sensitivity={config.PORCUPINE_SENSITIVITY}"
         )
+
+    elif config.WAKEWORD_ENGINE == 'vosk':
+        from services.wakeword_vosk_service import WakeWordService
+
+        wakeword = WakeWordService(
+            bus=bus,
+            controller=controller,
+        )
+        logger.info(
+            "[WAKEWORD] Vosk loaded successfully.  "
+            f"Wake word: {config.VOSK_WAKEWORD}"
+        )
+
+    else:
+        raise ValueError(
+            f"Unknown WAKEWORD_ENGINE: {config.WAKEWORD_ENGINE}"
+        )
+    wakeword.start()
 
     # ---------- VISION LOOP ----------
 
