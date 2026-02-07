@@ -8,8 +8,8 @@ import queue
 import requests
 from services.vision.frame_broadcast import get_jpeg_frame
 import services.vision.frame_broadcast as fb
-print("[UI sees frame_broadcast at]", fb.__file__)
-print("[UI sees frame_broadcast module id]", id(fb))
+#print("[UI sees frame_broadcast at]", fb.__file__)
+#print("[UI sees frame_broadcast module id]", id(fb))
 from .mic_level import mic_level_queue
 from collections import deque
 import config
@@ -71,7 +71,7 @@ def stream_logs():
             line = f.readline()
             if line:
                 clean = line.rstrip()
-                log_buffer.append(clean)        # 👈 NEW
+                log_buffer.append(clean)     
                 yield f"data: {clean}\n\n"
                 last_keepalive = time.time()
             else:
