@@ -18,12 +18,24 @@ CAM_CAPTURE_WIDTH = 1280
 CAM_CAPTURE_HEIGHT = 720
 
 # =====================================================
-# Porcupine - Wake word
+# Wake Word Detection - Porcupine (picovoice) or Vosk
 # =====================================================
+'''
+Porcupine requires an api key. The wake word model is run locally,
+but picovoice requires authentication at boot. 
+Picovoice is a better option for performance, but is more limited 
+by the provider.  Vosk is the alternative for a purely local option.
+'''
+WAKEWORD_ENGINE = "porcupine" # options: porupine, vosk
+
 PORCUPINE_ACCESS_KEY = "your-picovoice-api-key"
 PORCUPINE_DIR = MODELS_DIR / "porcupine"
 PORCUPINE_KEYWORD_PATH = PORCUPINE_DIR / "hey-amy_en_raspberry-pi_v4_0_0.ppn"
 PORCUPINE_SENSITIVITY = 0.6
+
+VOSK_MODEL_PATH = MODELS_DIR / "Vosk"
+VOSK_WAKEWORD = "hey amy"
+
 
 # =====================================================
 # ASR - SenseVoice

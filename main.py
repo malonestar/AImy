@@ -16,7 +16,6 @@ from adapters.llm_qwen import QwenAdapter
 from services.llm_service import LLMService
 from adapters.tts_melotts import MeloTTSAdapter
 from services.tts_service import TTSService
-from services.wakeword_porcupine_service import WakeWordService
 from core.states import AssistantState
 from adapters.axera_utils import Detector
 from services.yolo11x_trigger_service import run_yolo11x_trigger_loop
@@ -199,18 +198,22 @@ def main():
 
     # Boot state
     controller.set_state(AssistantState.LOOKING)
-    wakeword = WakeWordService(
-        bus=bus,
-        controller=controller,
-        keyword_path=config.PORCUPINE_KEYWORD_PATH,
-        sensitivity=config.PORCUPINE_SENSITIVITY,
-        access_key=config.PORCUPINE_ACCESS_KEY,
-    )
-    wakeword.start()
-    logger.info(
-        f"[WAKEWORD] keyword={config.PORCUPINE_KEYWORD_PATH.name} "
-        f"sensitivity={config.PORCUPINE_SENSITIVITY}"
-    )
+
+    if config.WAKEWORD_ENGINE == 'porcupine':
+        from services.wakeword_porcupine_service import WakeWordService
+
+        wakeword = WakeWordService(
+            bus=bus,
+            controller=controller,
+            keyword_path=config.PORCUPINE_KEYWORD_PATH,
+            sensitivity=config.PORCUPINE_SENSITIVITY,
+            access_key=config.PORCUPINE_ACCESS_KEY,
+        )
+        wakeword.start()
+        logger.info(
+            f"[WAKEWORD] keyword={config.PORCUPINE_KEYWORD_PATH.name} "
+            f"sensitivity={config.PORCUPINE_SENSITIVITY}"
+        )
 
     # ---------- VISION LOOP ----------
 

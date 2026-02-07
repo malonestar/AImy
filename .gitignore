@@ -63,3 +63,18 @@ bert-base-uncased/**
 !bert-base-uncased/
 !bert-base-uncased/README.md
 
+# ===============================
+# Porcupine wake word models
+# ===============================
+
+# Ignore all PPN files by default
+**/*.ppn
+
+# Allow Porcupine directory itself
+!models/porcupine/
+!models/porcupine/**
+
+# Allow custom Porcupine wake word(s)
+!models/porcupine/*.ppn
+
+
