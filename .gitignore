@@ -51,7 +51,7 @@ assistant.log
 # Ignore model contents but keep structure
 # ===============================
 models/**
-
+!models/README.md
 !models/**/
 !models/**/.gitkeep
 !models/yolo11x/coco.txt
