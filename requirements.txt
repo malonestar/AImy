@@ -18,3 +18,4 @@ cn2an
 pypinyin
 jieba
 vosk
+gdown
