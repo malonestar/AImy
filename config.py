@@ -99,7 +99,7 @@ in the camera feed.  If a ROI is defined, and a person is detected in
 the ROI for the defined amount of time, then a notification message
 and image will be sent via the webhook.
 '''
-DISCORD_ENABLED = True
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1375968949161693234/AMVe_pZyK8xqGzt-WBhQkIt5nqwb4xnOm2Omi15s1W6BYlIsfx6fl8rO-MgvkzPhVhiE"
+DISCORD_ENABLED = False
+DISCORD_WEBHOOK_URL = "YOUR_WEBHOOK_URL_HERE"
 
 
