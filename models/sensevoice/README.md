@@ -1,1 +1,0 @@
-[SenseVoice Axera HF Model Repo](https://huggingface.co/AXERA-TECH/SenseVoice)

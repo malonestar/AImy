@@ -1,1 +1,0 @@
-[Yolo11 Axera HF Model Repo](https://huggingface.co/AXERA-TECH/YOLO11)
