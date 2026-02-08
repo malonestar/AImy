@@ -22,11 +22,27 @@ def download_qwen():
         ],
     )
 
-def main():
-    print("[MODELS] Downloading Qwen...")
-    download_qwen()
+def download_yolo():
+    dest = MODELS_DIR / "yolo11x"
+    dest.mkdir(parents=True, exist_ok=True)
 
-    print("[MODELS] Model download complete.")
+    snapshot_download(
+        repo_id="AXERA-TECH/YOLO11",
+        local_dir=dest,
+        local_dir_use_symlinks=False,
+        resume_download=True,
+        allow_patterns=[
+            "ax650/yolo11x.axmodel",
+        ],
+    )
+
+def main():
+    print("[MODELS] Downloading Qwen2.5-1.5B-IT-int8...")
+    download_qwen()
+    print("[MODELS] Qwen download complete.")
+    print("[MODELS] Downloading Yolo11x...")
+    download_yolo()
+    print("[MODELS] YOLO download complete.")
 
     if __name__ == "__main__":
         main()
