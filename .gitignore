@@ -26,7 +26,7 @@ assistant.log
 *.zip
 
 # ===============================
-# Model binaries (DO NOT COMMIT)
+# Model binaries
 # ===============================
 **/*.axmodel
 **/*.onnx
@@ -56,10 +56,6 @@ models/**
 !models/**/README.md
 !models/**/.gitkeep
 !models/yolo11x/coco.txt
-!models/sensevoice/utils/tokenizer.py
-!models/sensevoice/utils/SenseVoiceAx.py
-!models/sensevoice/utils/print_utils.py
-!models/sensevoice/utils/frontend.py
 
 # ===============================
 # Hugging Face BERT downloads
@@ -78,10 +74,6 @@ bert-base-uncased/**
 # Allow Porcupine directory itself
 !models/porcupine/
 !models/porcupine/**
-
-# Allow vosk directory
-!models/Vosk/
-!models/Vosk/**
 
 # Allow custom Porcupine wake word(s)
 !models/porcupine/*.ppn
