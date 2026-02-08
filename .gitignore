@@ -55,6 +55,7 @@ models/**
 !models/**/
 !models/**/README.md
 !models/**/.gitkeep
+!models/yolo11x/coco.txt
 
 # ===============================
 # Hugging Face BERT downloads
@@ -64,7 +65,7 @@ bert-base-uncased/**
 !bert-base-uncased/README.md
 
 # ===============================
-# Porcupine wake word models
+# wake word models
 # ===============================
 
 # Ignore all PPN files by default
