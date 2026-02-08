@@ -5,6 +5,8 @@ from huggingface_hub import snapshot_download
 from pathlib import Path
 import sys
 import shutil
+import subprocess
+import gdown 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 MODELS_DIR = BASE_DIR / "models"
@@ -26,49 +28,45 @@ def download_qwen():
     )
     print("[MODELS]: Qwen download complete.")
 
-def download_sensevoice():
-    print("[MODELS] Downloading SenseVoice...")
-    dest = MODELS_DIR / "sensevoice"
-    models_dest = dest / "models"
+def download_audio_model_bundle():
+    print("[MODELS] Downloading audio model bundle (SenseVoice + MeloTTS + Vosk)...")
 
-    dest.mkdir(parents=True, exist_ok=True)
-    models_dest.mkdir(parents=True, exist_ok=True)
+    # Google Drive file ID (models.7z)
+    GDRIVE_FILE_ID = "1vncy0l9agCGLPctnY_3CITS9R7rRs_XT"
+    archive_path = BASE_DIR / "models.7z"
 
-    snapshot_download(
-        repo_id="AXERA-TECH/SenseVoice",
-        local_dir=dest,
-        local_dir_use_symlinks=False,
-        resume_download=True,
-        allow_patterns=[
-            "sensevoice_ax650/sensevoice.axmodel",
-            "sensevoice_ax650/chn_jpn_yue_eng_ko_spectok.bpe.model",
-            "sensevoice_ax650/am.mvn",
-        ],
+    # Skip if already present
+    if (
+        (MODELS_DIR / "sensevoice").exists()
+        and (MODELS_DIR / "melotts").exists()
+        and (MODELS_DIR / "vosk").exists()
+    ):
+        print("[MODELS] Audio models already present, skipping.")
+        return
+
+    url = f"https://drive.google.com/uc?id={GDRIVE_FILE_ID}"
+
+    try:
+        gdown.download(
+            url,
+            str(archive_path),
+            quiet=False,
+            fuzzy=True,   # important for large Drive files
+        )
+    except Exception as e:
+        print("[ERROR] Failed to download audio model bundle.")
+        print("Ensure the Google Drive file is shared as:")
+        print("  Anyone with the link → Viewer")
+        raise
+
+    print("[MODELS] Extracting models.7z...")
+    subprocess.run(
+        ["7z", "x", str(archive_path), f"-o{BASE_DIR}"],
+        check=True
     )
 
-    # ---- flatten files ----
-    ax_src = dest / "sensevoice_ax650" / "sensevoice.axmodel"
-    bpe_src = dest / "sensevoice_ax650" / "chn_jpn_yue_eng_ko_spectok.bpe.model"
-    mvn_src = dest / "sensevoice_ax650" / "am.mvn"
-
-    ax_dst = models_dest / "sensevoice.axmodel"
-    bpe_dst = models_dest / "chn_jpn_yue_eng_ko_spectok.bpe.model"
-    mvn_dst = dest / "am.mvn"
-
-    for src in [ax_src, bpe_src, mvn_src]:
-        if not src.exists():
-            raise FileNotFoundError(f"Expected file not found: {src}")
-
-    if not ax_dst.exists():
-        shutil.move(ax_src, ax_dst)
-    if not bpe_dst.exists():
-        shutil.move(bpe_src, bpe_dst)
-    if not mvn_dst.exists():
-        shutil.move(mvn_src, mvn_dst)
-
-    shutil.rmtree(dest / "sensevoice_ax650", ignore_errors=True)
-
-    print("[MODELS] SenseVoice download complete.")
+    archive_path.unlink(missing_ok=True)
+    print("[MODELS] Audio model bundle installed successfully.")
 
 def download_yolo():
     print("[MODELS] Downloading YOLO11x...")
@@ -96,11 +94,11 @@ def download_yolo():
     shutil.rmtree(dest/"ax650", ignore_errors=True)
     print("[MODELS] YOLO11x download complete)")
 
+
 def main():
     download_qwen()
-    download_yolo()
-    download_sensevoice()
-    
+    download_audio_model_bundle()
+    download_yolo()    
 
 if __name__ == "__main__":
     main()
