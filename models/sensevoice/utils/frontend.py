@@ -1,4 +1,10 @@
 # -*- encoding: utf-8 -*-
+
+# AUTHOR: AXERA-TECH
+# https://huggingface.co/AXERA-TECH/SenseVoice/tree/main/python
+# this was recently updated, added older version for compatibility
+# will update Sensevoice functionality soon and add to downloader script
+
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, NamedTuple, Set, Tuple, Union
 import copy

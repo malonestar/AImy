@@ -1,3 +1,8 @@
+# AUTHOR: AXERA-TECH
+# https://huggingface.co/AXERA-TECH/SenseVoice/tree/main/python
+# this was recently updated, added older version for compatibility
+# will update Sensevoice functionality soon and add to downloader script
+
 import axengine as axe
 import numpy as np
 import librosa
