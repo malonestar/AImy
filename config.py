@@ -23,8 +23,8 @@ CAM_CAPTURE_HEIGHT = 720
 '''
 Porcupine requires an api key. The wake word model is run locally,
 but picovoice requires authentication at boot. 
-Picovoice is a better option for performance, but is more limited 
-by the provider.  Vosk is the alternative for a purely local option.
+Picovoice is a better option for performance, but is a more limited 
+license.  Vosk is the alternative for a purely local option.
 '''
 WAKEWORD_ENGINE = "vosk" # options: porupine, vosk
 
@@ -35,7 +35,6 @@ PORCUPINE_SENSITIVITY = 0.6
 
 VOSK_MODEL_PATH = MODELS_DIR / "Vosk"
 VOSK_WAKEWORD = "hey amy"
-
 
 # =====================================================
 # ASR - SenseVoice
@@ -88,9 +87,19 @@ MELO_DEC_LEN     = 128
 MELO_SPEED       = 1.2
 MELO_TMP_OUTDIR  = THIS_DIR / "output"
 
-# =====================================================
 # Utility: ensure output directory exists
-# =====================================================
 MELO_TMP_OUTDIR.mkdir(exist_ok=True)
+
+# =====================================================
+# Discord 
+# =====================================================
+'''
+Currently the only Discord functionality is within the object detection 
+in the camera feed.  If a ROI is defined, and a person is detected in 
+the ROI for the defined amount of time, then a notification message
+and image will be sent via the webhook.
+'''
+DISCORD_ENABLED = True
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1375968949161693234/AMVe_pZyK8xqGzt-WBhQkIt5nqwb4xnOm2Omi15s1W6BYlIsfx6fl8rO-MgvkzPhVhiE"
 
 

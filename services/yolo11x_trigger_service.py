@@ -2,7 +2,7 @@
 import cv2, time
 from pathlib import Path
 from adapters.axera_utils import Detector
-from notify import send_discord_message, send_discord_image
+from services.discord_notify import send_discord_message, send_discord_image
 from services.vision.camera_pipeline import CameraPipeline
 from services.vision.roi_manager import ROIManager
 from services.vision.presence_trigger import PresenceTrigger
@@ -13,6 +13,7 @@ from core.event_names import (
 )
 from services.vision.frame_broadcast import publish_frame
 from services.vision import vision_state
+from config import DISCORD_ENABLED
 
 
 def run_yolo11x_trigger_loop(detector, cap_width: int, cap_height: int, bus=None):
@@ -102,9 +103,12 @@ def run_yolo11x_trigger_loop(detector, cap_width: int, cap_height: int, bus=None
 
                 image_to_save_with_boxes = detector.draw_detections(original_frame.copy(), detections)
                 cv2.imwrite(str(screenshot_path), image_to_save_with_boxes)
-
-                send_discord_message("Person detected in Region of Interest!")
-                send_discord_image(str(screenshot_path), message="Detection snapshot attached.")
+                
+                if DISCORD_ENABLED:
+                    from services.discord_notify import send_discord_message, send_discord_image
+                    send_discord_message("Person detected in Region of Interest!")
+                    send_discord_image(str(screenshot_path), message="Detection snapshot attached.")
+                
 
                 if bus:
                     bus.publish(VISION_PERSON_PERSISTED, {"roi": roi.roi_box, "image": str(screenshot_path)})
