@@ -68,6 +68,43 @@ def download_audio_model_bundle():
     archive_path.unlink(missing_ok=True)
     print("[MODELS] Audio model bundle installed successfully.")
 
+def download_bert_base_uncased():
+    print("[MODELS] Downloading BERT base uncased tokenizer...")
+
+    # Google Drive file ID (bert-base-uncased.7z or .zip)
+    GDRIVE_FILE_ID = "1zdu7vlBMglUf4Ip_6uuAz4EBCaG9PkMc"
+    archive_path = BASE_DIR / "bert-base-uncased.7z"
+    bert_dest = BASE_DIR / "bert-base-uncased"
+
+    # Skip if already present
+    if bert_dest.exists():
+        print("[MODELS] bert-base-uncased already present, skipping.")
+        return
+
+    url = f"https://drive.google.com/uc?id={GDRIVE_FILE_ID}"
+
+    try:
+        gdown.download(
+            url,
+            str(archive_path),
+            quiet=False,
+            fuzzy=True,   # required for large Drive files
+        )
+    except Exception:
+        print("[ERROR] Failed to download bert-base-uncased.")
+        print("Ensure the Google Drive file is shared as:")
+        print("  Anyone with the link → Viewer")
+        raise
+
+    print("[MODELS] Extracting bert-base-uncased...")
+    subprocess.run(
+        ["7z", "x", str(archive_path), f"-o{BASE_DIR}"],
+        check=True
+    )
+
+    archive_path.unlink(missing_ok=True)
+    print("[MODELS] BERT base uncased installed successfully.")
+
 def download_yolo():
     print("[MODELS] Downloading YOLO11x...")
     dest = MODELS_DIR / "yolo11x"
@@ -98,6 +135,7 @@ def download_yolo():
 def main():
     download_qwen()
     download_audio_model_bundle()
+    download_bert_base_uncased()
     download_yolo()    
 
 if __name__ == "__main__":
