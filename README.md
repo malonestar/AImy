@@ -3,7 +3,7 @@ AImy is fully offline, vision-enabled AI voice assistant.  It runs on an a Raspb
 
 [<img src="https://i.imgur.com/dnMwABX.png" width="800" alt="image of AImy voice assistant dashboard" />](https://i.imgur.com/dnMwABX.png)
 
-[Watch a short demo video here!](https://www.youtube.com/watch?v=sHD0hleZxH4)
+[Watch a short demo video here!](https://youtu.be/sHD0hleZxH4)
 
 ## Prerequisites  
 - LLM 8850 Software Installation - [Official M5Stack Documentation](https://docs.m5stack.com/en/guide/ai_accelerator/llm-8850/m5_llm_8850_software_install)
@@ -25,7 +25,10 @@ LLM - Qwen2.5-1.5B-IT-int8 - [Axera Qwen2.5-1.5B-IT-int8-python repo](https://hu
 TTS - MeloTTS - [Axera MeloTTS HF Repo](https://huggingface.co/AXERA-TECH/MeloTTS)  
 Wakeword detection - Vosk - [Vosk model page](https://alphacephei.com/vosk/models)  
 
-## Installation and running
+## Installation and running  
+
+Installation takes about 5-10 mins total, including model downloads.  
+I have a [short video](https://youtu.be/xxNVnvPNR0Y) showing the full installation process, up through running your first voice prompt.  Took about 8 minutes total! 
 
 1. Clone repo  
 ```
