@@ -40,12 +40,13 @@ git clone https://github.com/malonestar/AImy.git
 chmod +x install.sh
 ./install.sh
 ```
-  - The installation script will:
-      - Check system dependencies and install if missing - PiCamera2, OpenCV
-      - Create virtual environment 'aimy_venv'
-      - Install dependencies from requirements.txt
-      - Create bashrc alias to activate venv from anywhere by typing 'aimyenv'
-      - Download models via scripts/download_models.py - Qwen and Yolo from Axera HF repos, Sensevoice+MeloTTS+Vosk from Google Drive to maintain compatibility with an older version of the Sensevoice script from Axera
+The installation script will:
+  - Check system dependencies and install if missing - PiCamera2, OpenCV
+  - Create virtual environment 'aimy_venv'
+  - Install dependencies from requirements.txt
+  - Create bashrc alias to activate venv from anywhere by typing 'aimyenv'
+  - Download models via scripts/download_models.py - Qwen and Yolo from Axera HF repos, Sensevoice+MeloTTS+Vosk from Google Drive to maintain compatibility with an older version of the Sensevoice script from Axera
+
 
 3. Activate virtual environment
 ```
