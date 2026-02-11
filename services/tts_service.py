@@ -1,7 +1,7 @@
 # AImy/services/tts_service.py
 from loguru import logger
 from core.event_names import REQUEST_SPEAK, SPEECH_PLAYED
-from speech.tts_normalization import normalize_for_tts
+from services.speech.tts_normalization import normalize_for_tts
 
 class TTSService:
     """
