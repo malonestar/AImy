@@ -73,10 +73,10 @@ class ROIManager:
             text = "Draw ROI. 's' to save, 'c' to cancel."
             color = (0, 255, 255)
         elif paused:
-            text = "Inference paused. Press 'r' to resume."
+            text = "Inference paused."
             color = (0, 165, 255)  # orange for clarity
         else:
-            text = "Press 'd' to define ROI. 'q' to quit."
+            text = "Use button to define ROI >> "
             color = (255, 255, 255)
 
         cv2.putText(frame, text, (10, 60),
