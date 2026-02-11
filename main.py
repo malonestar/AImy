@@ -148,6 +148,7 @@ def main():
     #----------- LAUNCH UI ---------------
     launch_ui()
     wait_for_ui()
+
     logger.info("[SYSTEM] UI ready, loading models…")
     bus.subscribe(STATE_CHANGED, lambda evt: ui_post("/push_state", evt.payload))
 
