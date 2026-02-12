@@ -47,6 +47,7 @@ class SenseVoiceAdapter:
         self._post = rich_transcription_postprocess
         print("[ASR] SenseVoice initialized successfully.")
 
+
     def infer_audio(self, audio_f32: np.ndarray) -> str:
         """
         audio_f32: mono float32 @ 16kHz
