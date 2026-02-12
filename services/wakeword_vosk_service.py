@@ -78,7 +78,9 @@ class WakeWordService:
 
                         if VOSK_WAKEWORD in text:
                             logger.info(f"[WAKEWORD] Detected: {VOSK_WAKEWORD}")
+                            self._running = False # stop mic upon wakeword detected
                             self.bus.publish(WAKEWORD_DETECTED, None)
+                            break # exit loop to close mic stream
 
         except Exception as e:
             logger.exception(f"[WAKEWORD] Vosk error: {e}")

@@ -281,6 +281,9 @@ def main():
     # ---------- After speech finishes, resume vision inference ----------
     def on_speech_played(evt):
         bus.publish(VISION_INFER_RESUMED, None)
+        if config.WAKEWORD_ENGINE == "vosk":
+            logger.info("[WAKEWORD] Restarting Vosk listener")
+            wakeword.start()
 
     bus.subscribe(SPEECH_PLAYED, on_speech_played)
 
