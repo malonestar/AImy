@@ -1,5 +1,6 @@
 # AImy
 AImy is fully offline, vision-enabled AI voice assistant.  It runs on an a Raspberry Pi 5 with the LLM 8850 accelerator from Axera and M5Stack.  
+Currently running on Trixie with Python 3.13 but should work on 3.12 or 3.11, I will test with pyenv soon and work to make it more compatible where needed. 
 
 [<img src="/media/06_AIMY_demo_dashboard_20260208.png" width="800" alt="image of AImy voice assistant dashboard" />](/media/06_AIMY_demo_dashboard_20260208.png)
 
@@ -12,7 +13,7 @@ AImy is fully offline, vision-enabled AI voice assistant.  It runs on an a Raspb
 - Raspberry Pi 5 (8gb)
 - [M5Stack LLM 8850](https://shop.m5stack.com/products/ai-8850-llm-accleration-m-2-module-ax8850?srsltid=AfmBOorb8a6pqowOzc3W6XTMt_rQi0eRfS348f9Q4nSUv8zWs7-WOU4Q&variant=46766221459713)
 - Raspberry Pi M.2 Hat+
-- Raspberry Pi Camera Module 3
+- Raspberry Pi Camera Module (or comparable module)
 - USB Speaker, USB Microphone (I used [Waveshare USB to Audio card](https://www.waveshare.com/usb-to-audio.htm?srsltid=AfmBOoq6BNzQbLJWfXqs6gvRb73WYQn_J39oWneCJ5zVkfmi9arjc4iu))
 
 The LLM 8850 M.2 Card is also available in a kit from M5Stack that includes their own version of an M.2 hat - [see production information here](https://shop.m5stack.com/products/ai-8850-llm-accelerator-m-2-kit-8gb-version-ax8850?srsltid=AfmBOooJJABFyCjqG_JYt5sdAtXISGdD7OZnD173HBugBlfWJCz8MYIi).  This version would not require the Raspberry Pi M.2 Hat+ listed above.  
